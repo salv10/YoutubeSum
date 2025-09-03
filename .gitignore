@@ -1,5 +1,6 @@
 # Ambiente virtuale
-venv/
+venv_new/
+.venv_new/
 
 # File temporanei Python
 __pycache__/
