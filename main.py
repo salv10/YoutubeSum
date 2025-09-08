@@ -19,13 +19,20 @@ if __name__ == "__main__":
         if not nomeFile:
             raise ValueError("Impossibile recuperare il titolo del video. Controlla l'URL fornito.")
         
+        print(nomeFile) # testing
+        
         # imposto il path di output alla cartella dei download e il nome del file e faccio il download
-        output_path = os.path.join(tempfile.gettempdir(), nomeFile + ".mp3")
+        output_path = os.path.join(tempfile.gettempdir(), nomeFile)
         #print(output_path) # testing
         downloader.download_video(url, output_path)
+        print("Download completato!") #testing
+
         # trascrivo il file scaricato
         testo = transcriber.transcribe_audio(output_path)
-        print(testo)
+        
+        # creazione del file dopo averlo trascritto
+        transcriber.create_txt_file(testo, temp_path, nomeFile)
+         
 
     except Exception as e:
         print(f"Si è verificato un errore durante il download: {e}")
